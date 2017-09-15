@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="evgeny.manko.mireapp.StartActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="top"
+        app:lottie_fileName="mireapp_anim.json"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:text="Привет!"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:id="@+id/helloTetView"
+        android:layout_gravity="center"
+        android:layout_below="@+id/animation_view"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:id="@+id/start_input_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:layout_below="@+id/helloTetView"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Введи название своей учебной группы:"
+            android:textColor="@color/colorPrimary" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/start_groupname_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="Учебная группа"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="10"
+                    android:textAlignment="center"
+                    app:met_floatingLabel="normal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/checked_inst_anim"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="invisible"
+                        app:lottie_autoPlay="false"
+                        app:lottie_fileName="simple_check.json"
+                        app:lottie_loop="false" />
+
+                    <TextView
+                        android:id="@+id/start_inst_tv"
+                        android:layout_width="190dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/checked_inst_anim"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorPrimary"
+                        tools:layout_editor_absoluteX="63dp"
+                        tools:layout_editor_absoluteY="8dp"
+                        tools:text="Физико-технологическйи институт" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/checked_type_anim"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:visibility="invisible"
+                        app:lottie_autoPlay="false"
+                        app:lottie_fileName="simple_check.json"
+                        app:lottie_loop="false" />
+
+                    <TextView
+                        android:id="@+id/start_type_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/checked_type_anim"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorPrimary"
+                        tools:text="Бакалавриат" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/checked_course_anim"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:visibility="invisible"
+                        app:lottie_autoPlay="false"
+                        app:lottie_fileName="simple_check.json"
+                        app:lottie_loop="false" />
+
+                    <TextView
+                        android:id="@+id/start_course_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/checked_course_anim"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorPrimary"
+                        tools:text="1 курс" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/start_fab_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_navigate_next_white_24dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
