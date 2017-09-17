@@ -99,7 +99,7 @@ public class StartActivity extends AppCompatActivity {
                     if (instId!=-1) {
                         instChecked.playAnimation();
                         instChecked.setVisibility(View.VISIBLE);
-                        instituteNameTV.setText(UniversityInfo.getInstituteNamebyID(instId));
+                        instituteNameTv.setText(UniversityInfo.getInstituteNamebyID(instId));
 
                     } else {
                         groupNameText.setError("Институт не сущевствует");
@@ -110,11 +110,11 @@ public class StartActivity extends AppCompatActivity {
                         if (c == 'Б') {
                             typeChecked.playAnimation();
                             typeChecked.setVisibility(View.VISIBLE);
-                            typeTV.setText("Бакалавриат");
+                            typeTv.setText("Бакалавриат");
                         } else if (c == 'С') {
                             typeChecked.playAnimation();
                             typeChecked.setVisibility(View.VISIBLE);
-                            typeTV.setText("Специалитет");
+                            typeTv.setText("Специалитет");
                         }
                     } else if ((charSequence.length() == 4 || charSequence.length() == 7) & charSequence.length() - 1 == last)
                         groupNameText.append("-");
@@ -123,7 +123,7 @@ public class StartActivity extends AppCompatActivity {
                         if (c >= '0' && c <= '9') {
                             int year = Character.digit(c, 10);
                             int course = 8 - year;
-                            courseTV.setText(course + " курс");
+                            courseTv.setText(course + " курс");
                             courseChecked.playAnimation();
                             courseChecked.setVisibility(View.VISIBLE);
                         }
@@ -146,8 +146,8 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                helloTV.startAnimation(anim);
-                helloTV.setVisibility(View.VISIBLE);
+                helloTv.startAnimation(anim);
+                helloTv.setVisibility(View.VISIBLE);
             }
 
             @Override
