@@ -31,19 +31,38 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.rengwuxian.materialedittext.validation.RegexpValidator;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class StartActivity extends AppCompatActivity {
 
-    MaterialEditText groupNameText;
+    @BindView(R.id.start_groupname_text) MaterialEditText groupNameText;
+    
+    @BindView(R.id.helloTetView) TextView helloTv;
+    @BindView(R.id.start_input_layout) LinearLayout inputLayout;
+    
+//    Lottie views
+    @BindView(R.id.checked_inst_anim) LottieAnimationView instChecked;
+    @BindView(R.id.checked_type_anim) LottieAnimationView typeChecked;
+    @BindView(R.id.checked_course_anim) LottieAnimationView courseChecked;
+    @BindView(R.id.animation_view) LottieAnimationView animationView;
+
+    @BindView(R.id.start_inst_tv) TextView instituteNameTv;
+    @BindView(R.id.start_type_tv) TextView typeTv;
+    @BindView(R.id.start_course_tv) TextView courseTv;
+
+    @BindView(R.id.start_fab_next) FloatingActionButton fabNext;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        ButterKnife.bind(this);
 
-        final TextView helloTV = (TextView) findViewById(R.id.helloTetView);
-        final LinearLayout inputLayout = (LinearLayout) findViewById(R.id.start_input_layout);
         final Animation anim2 = AnimationUtils.loadAnimation(this, R.anim.alpha_anim);
         final Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha_anim);
+
         anim.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -61,59 +80,53 @@ public class StartActivity extends AppCompatActivity {
 
             }
         });
-
-        final LottieAnimationView instChecked = (LottieAnimationView) findViewById(R.id.checked_inst_anim);
-        final LottieAnimationView typeChecked = (LottieAnimationView) findViewById(R.id.checked_type_anim);
-        final LottieAnimationView courseChecked = (LottieAnimationView) findViewById(R.id.checked_course_anim);
-        final TextView instituteNameTV = (TextView) findViewById(R.id.start_inst_tv);
-        final TextView typeTV = (TextView) findViewById(R.id.start_type_tv);
-        final TextView courseTV = (TextView) findViewById(R.id.start_course_tv);
-        final FloatingActionButton fabNext = (FloatingActionButton) findViewById(R.id.start_fab_next);
+        
         fabNext.hide();
 
-        groupNameText = (MaterialEditText) findViewById(R.id.start_groupname_text);
         groupNameText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         groupNameText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+            
             int last = 0;
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.length()!=10) fabNext.hide();
-                if(charSequence.length()==1){
-                    int ID = UniversityInfo.getInstituteIDbyCharGroup(charSequence.charAt(0));
-                    if(ID!=-1){
+                if(charSequence.length() != 10) fabNext.hide();
+                if(charSequence.length() == 1) {
+                    int instId = UniversityInfo.getInstituteIDbyCharGroup(charSequence.charAt(0));
+                    if (instId!=-1) {
                         instChecked.playAnimation();
                         instChecked.setVisibility(View.VISIBLE);
-                        instituteNameTV.setText(UniversityInfo.getInstituteNamebyID(ID));
+                        instituteNameTv.setText(UniversityInfo.getInstituteNamebyID(instId));
 
-                    } else groupNameText.setError("Институт не сущевствует");
-                }else
-                if(charSequence.length()==3){
-                    char c = charSequence.charAt(2);
-                    if(c=='Б'){
-                        typeChecked.playAnimation();
-                        typeChecked.setVisibility(View.VISIBLE);
-                        typeTV.setText("Бакалавриат");
+                    } else {
+                        groupNameText.setError("Институт не сущевствует");
                     }
-                    else if(c=='С'){
-                        typeChecked.playAnimation();
-                        typeChecked.setVisibility(View.VISIBLE);
-                        typeTV.setText("Специалитет");
-                    }
-                }else
-                if((charSequence.length()==4||charSequence.length()==7)&charSequence.length()-1==last)
-                    groupNameText.append("-");
-                else if(charSequence.length()==10){
-                    char c = charSequence.charAt(9);
-                    if(c>='0'&&c<='9') {
-                        int year = Character.digit(c, 10);
-                        int course = 8 - year;
-                        courseTV.setText(course + " курс");
-                        courseChecked.playAnimation();
-                        courseChecked.setVisibility(View.VISIBLE);
+                } else {
+                    if (charSequence.length() == 3) {
+                        char c = charSequence.charAt(2);
+                        if (c == 'Б') {
+                            typeChecked.playAnimation();
+                            typeChecked.setVisibility(View.VISIBLE);
+                            typeTv.setText("Бакалавриат");
+                        } else if (c == 'С') {
+                            typeChecked.playAnimation();
+                            typeChecked.setVisibility(View.VISIBLE);
+                            typeTv.setText("Специалитет");
+                        }
+                    } else if ((charSequence.length() == 4 || charSequence.length() == 7) & charSequence.length() - 1 == last)
+                        groupNameText.append("-");
+                    else if (charSequence.length() == 10) {
+                        char c = charSequence.charAt(9);
+                        if (c >= '0' && c <= '9') {
+                            int year = Character.digit(c, 10);
+                            int course = 8 - year;
+                            courseTv.setText(course + " курс");
+                            courseChecked.playAnimation();
+                            courseChecked.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
                 last = charSequence.length();
@@ -125,7 +138,6 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        LottieAnimationView animationView = (LottieAnimationView) findViewById(R.id.animation_view);
         animationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
@@ -134,8 +146,8 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                helloTV.startAnimation(anim);
-                helloTV.setVisibility(View.VISIBLE);
+                helloTv.startAnimation(anim);
+                helloTv.setVisibility(View.VISIBLE);
             }
 
             @Override
