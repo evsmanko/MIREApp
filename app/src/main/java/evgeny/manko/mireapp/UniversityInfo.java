@@ -1,4 +1,7 @@
 package evgeny.manko.mireapp;
+
+import android.util.Log;
+
 /**
  * Created by Evgen on 22.08.2017.
  */
@@ -29,7 +32,6 @@ public class UniversityInfo {
     private static String MITHT = "на проспекте Вернадского 86";
 
 
-
     public static int getInstituteIDbyCharGroup(char c){
         switch (c){
             case 'Т': return FTISID;
@@ -41,7 +43,9 @@ public class UniversityInfo {
             case 'Р': return RTSID;
             case 'Х': return THTID;
             case 'У': return IUSTROID;
-            default: return -1;
+            default:
+                Log.d(UniversityInfo.class.getSimpleName(), " - This institute id is'nt implemented yet");
+                return -1;
         }
     }
 
