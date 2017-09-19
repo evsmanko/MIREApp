@@ -96,29 +96,29 @@ public class StartActivity extends AppCompatActivity {
                 if(charSequence.length() != 10) fabNext.hide();
                 if(charSequence.length() == 1) {
                     int instId = UniversityInfo.getInstituteIDbyCharGroup(charSequence.charAt(0));
-                    if (instId!=-1) {
-                        instChecked.playAnimation();
-                        instChecked.setVisibility(View.VISIBLE);
-                        instituteNameTv.setText(UniversityInfo.getInstituteNamebyID(instId));
-
-                    } else {
-                        groupNameText.setError("Институт не сущевствует");
-                    }
+                    instChecked.playAnimation();
+                    instChecked.setVisibility(View.VISIBLE);
+                    instituteNameTv.setText(UniversityInfo.getInstituteNamebyID(instId));
                 } else {
                     if (charSequence.length() == 3) {
                         char c = charSequence.charAt(2);
-                        if (c == 'Б') {
-                            typeChecked.playAnimation();
-                            typeChecked.setVisibility(View.VISIBLE);
-                            typeTv.setText("Бакалавриат");
-                        } else if (c == 'С') {
-                            typeChecked.playAnimation();
-                            typeChecked.setVisibility(View.VISIBLE);
-                            typeTv.setText("Специалитет");
+                        typeChecked.playAnimation();
+                        typeChecked.setVisibility(View.VISIBLE);
+                        switch (c) {
+                            case 'Б':
+                                typeTv.setText("Бакалавриат");
+                                break;
+                            case 'С':
+                                typeTv.setText("Специалитет");
+                                break;
                         }
-                    } else if ((charSequence.length() == 4 || charSequence.length() == 7) & charSequence.length() - 1 == last)
+                    } else if (
+                            (charSequence.length() == 4 || charSequence.length() == 7)
+                                    && charSequence.length() - 1 == last
+                            ) {
                         groupNameText.append("-");
-                    else if (charSequence.length() == 10) {
+
+                    } else if (charSequence.length() == 10) {
                         char c = charSequence.charAt(9);
                         if (c >= '0' && c <= '9') {
                             int year = Character.digit(c, 10);
