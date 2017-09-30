@@ -158,20 +158,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:hint="Учебная группа"
+                    app:met_helperText="Введи название своей учебной группы"
                     android:inputType="textCapCharacters"
                     android:maxLength="10"
                     android:textAlignment="center"
                     app:met_floatingLabel="normal" />
-
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:text="Введи название своей учебной группы:"
-                    android:textColor="@color/colorPrimary" />
 
 
             </LinearLayout>

@@ -2,6 +2,7 @@ package evgeny.manko.mireapp;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import android.view.ViewGroup;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -123,6 +125,9 @@ public class StartActivity extends AppCompatActivity {
                         if (c >= '0' && c <= '9') {
                             int year = Character.digit(c, 10);
                             int course = 8 - year;
+                            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(groupNameText.getWindowToken(),
+                                    InputMethodManager.HIDE_NOT_ALWAYS);
                             courseTv.setText(course + " курс");
                             courseChecked.playAnimation();
                             courseChecked.setVisibility(View.VISIBLE);
