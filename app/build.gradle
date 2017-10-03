@@ -36,9 +36,9 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     // Firebase
-    compile 'com.google.firebase:firebase-auth:10.0.1'
+    compile 'com.google.firebase:firebase-auth:9.6.0'
     // FIrebase UI
-    compile 'com.firebaseui:firebase-ui-auth:1.0.1'
+    compile 'com.firebaseui:firebase-ui-auth:0.6.0'
 }
 
 
