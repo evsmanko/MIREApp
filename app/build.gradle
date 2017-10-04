@@ -37,7 +37,8 @@ dependencies {
 
     // Firebase
     compile 'com.google.firebase:firebase-auth:9.6.0'
-    // FIrebase UI
+    compile 'com.google.firebase:firebase-messaging:9.6.0'
+    // Firebase UI
     compile 'com.firebaseui:firebase-ui-auth:0.6.0'
 }
 
