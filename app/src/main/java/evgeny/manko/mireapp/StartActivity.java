@@ -1,26 +1,17 @@
 package evgeny.manko.mireapp;
 
 import android.animation.Animator;
-import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -28,13 +19,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.airbnb.lottie.L;
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.rengwuxian.materialedittext.MaterialEditText;
-import com.rengwuxian.materialedittext.validation.RegexpValidator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import evgeny.manko.mireapp.auth.AuthActivity;
+import evgeny.manko.mireapp.utils.Translit;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -54,13 +47,16 @@ public class StartActivity extends AppCompatActivity {
     @BindView(R.id.start_course_tv) TextView courseTv;
 
     @BindView(R.id.start_fab_next) FloatingActionButton fabNext;
-    
+
+    public static final int RC_SIGN_IN = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         ButterKnife.bind(this);
+
+
 
         final Animation anim2 = AnimationUtils.loadAnimation(this, R.anim.alpha_anim);
         final Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha_anim);
@@ -165,5 +161,12 @@ public class StartActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public void launchSomething(View view) {
+        String groupTopic = groupNameText.getText().toString();
+        FirebaseMessaging.getInstance().subscribeToTopic(Translit.toTranslit(groupTopic));
+        Log.d("TOPIC ", Translit.toTranslit(groupTopic));
     }
 }

@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "949124099231",
+    "firebase_url": "https://mireapp-e0a60.firebaseio.com",
+    "project_id": "mireapp-e0a60",
+    "storage_bucket": "mireapp-e0a60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949124099231:android:0487601115fe26c7",
+        "android_client_info": {
+          "package_name": "evgeny.manko.mireapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949124099231-2h0tq06oukbgv30vdeko3cg7l73ppfeq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "evgeny.manko.mireapp",
+            "certificate_hash": "1537d6f5b1866e28e6c37a030787ebb174be88f3"
+          }
+        },
+        {
+          "client_id": "949124099231-5bne0k1smmbe9ao3lhupk563m2sl8hvo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "evgeny.manko.mireapp",
+            "certificate_hash": "122a8f36658731b1cfa7f57f33c45a12c73df969"
+          }
+        },
+        {
+          "client_id": "949124099231-acev9qvh43gqogkeqamocjurp6d0ea6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsiRw2o4ooDQVm01wTBMfq7sqOLRyLpQs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949124099231-acev9qvh43gqogkeqamocjurp6d0ea6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
