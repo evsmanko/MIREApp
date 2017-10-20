@@ -5,8 +5,9 @@
     android:orientation="vertical"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
+    android:clickable="true"
     android:layout_height="match_parent"
-    tools:context="evgeny.manko.mireapp.StartActivity">
+    tools:context="evgeny.manko.schedule.StartActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
@@ -175,11 +176,21 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="12dp"
-                android:onClick="launchSomething"
                 />
         </RelativeLayout>
 
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/dev_vk_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:layout_alignParentStart="true"
+        android:text="VK разработчика" />
 
 </RelativeLayout>

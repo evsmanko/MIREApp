@@ -1,4 +1,4 @@
-package evgeny.manko.mireapp.utils;
+package evgeny.manko.schedule.utils;
 
 
 import java.util.HashMap;

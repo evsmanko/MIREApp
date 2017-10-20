@@ -1,0 +1,5 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('date4j.jar'))
+dependencies {
+    compile files('date4j.jar')
+}

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MireApp</string>
+    <string name="app_name">MIREApp</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_sign_in">Sign In</string>
 </resources>

@@ -1,4 +1,4 @@
-package evgeny.manko.mireapp.auth;
+package evgeny.manko.schedule.auth;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

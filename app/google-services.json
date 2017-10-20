@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:949124099231:android:0487601115fe26c7",
         "android_client_info": {
-          "package_name": "evgeny.manko.mireapp"
+          "package_name": "evgeny.manko.schedule"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "949124099231-2h0tq06oukbgv30vdeko3cg7l73ppfeq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "evgeny.manko.mireapp",
+            "package_name": "evgeny.manko.schedule",
             "certificate_hash": "1537d6f5b1866e28e6c37a030787ebb174be88f3"
           }
         },
@@ -26,7 +26,7 @@
           "client_id": "949124099231-5bne0k1smmbe9ao3lhupk563m2sl8hvo.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "evgeny.manko.mireapp",
+            "package_name": "evgeny.manko.schedule",
             "certificate_hash": "122a8f36658731b1cfa7f57f33c45a12c73df969"
           }
         },
