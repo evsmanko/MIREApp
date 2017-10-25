@@ -36,6 +36,9 @@ public class UniversityInfo {
 
         if (group.length()==10){
             if(group.equals("ТВБО-01-16")) return KBISPID;
+            if(group.equals("ТВБО-01-14")) return KBISPID;
+            if(group.equals("ТВБО-02-14")) return KBISPID;
+            if(group.equals("ТВБО-03-14")) return KBISPID;
         }
         if(group.length()>0)
             switch (group.charAt(0)){
@@ -52,7 +55,7 @@ public class UniversityInfo {
                 case 'Х': return THTID;
                 case 'У': return IUSTROID;
                 default:
-                    Log.d(UniversityInfo.class.getSimpleName(), " - This institute id is'nt implemented yet");
+                    Log.d(UniversityInfo.class.getSimpleName(), " - This institute id isn't implemented yet");
                     return -1;
         }
 
