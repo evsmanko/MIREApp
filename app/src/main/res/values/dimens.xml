@@ -4,4 +4,22 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+
+<!-- Month -->
+    <dimen name="mti_month_width">62dp</dimen>
+    <dimen name="mti_month_height">48dp</dimen>
+    <dimen name="mti_month_lbl_padding">8dp</dimen>
+    <dimen name="mti_month_lbl_padding_top">5dp</dimen>
+    <dimen name="mti_month_lbl_text">14dp</dimen>
+    <dimen name="mti_month_lbl_margin_top">8dp</dimen>
+
+    <!-- Timeline -->
+    <dimen name="mti_timeline_width">50dp</dimen>
+    <dimen name="mti_timeline_height">110dp</dimen>
+    <dimen name="mti_timeline_lbl_day_text">12dp</dimen>
+    <dimen name="mti_timeline_lbl_date_text">14dp</dimen>
+    <dimen name="mti_timeline_lbl_value">12dp</dimen>
+
+
+
 </resources>

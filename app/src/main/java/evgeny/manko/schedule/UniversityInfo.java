@@ -1,5 +1,6 @@
 package evgeny.manko.schedule;
 
+import android.icu.text.DateFormatSymbols;
 import android.util.Log;
 
 /**
@@ -35,10 +36,7 @@ public class UniversityInfo {
     public static int getInstituteIDbyGroup(String group){
 
         if (group.length()==10){
-            if(group.equals("ТВБО-01-16")) return KBISPID;
-            if(group.equals("ТВБО-01-14")) return KBISPID;
-            if(group.equals("ТВБО-02-14")) return KBISPID;
-            if(group.equals("ТВБО-03-14")) return KBISPID;
+            if(group.charAt(0)=='Т'&&group.charAt(1)=='В'&&group.charAt(2)=='Б') return KBISPID;
         }
         if(group.length()>0)
             switch (group.charAt(0)){
@@ -149,10 +147,10 @@ public class UniversityInfo {
             case KBISPID:
                 switch (courseNumber){
                 case 1: return "https://api.myjson.com/bins/c9pz5";
-                case 2: return "https://api.myjson.com/bins/dzktt";
-                case 3: return "https://api.myjson.com/bins/el0fl";
-                case 4: return "https://api.myjson.com/bins/18y4a9";
-                case 5: return "https://api.myjson.com/bins/19jjw1";
+                case 2: return "https://api.myjson.com/bins/p1aw3";
+                case 3: return "https://api.myjson.com/bins/14ikmb";
+                case 4: return "https://api.myjson.com/bins/t7c4j";
+                case 5: return "https://api.myjson.com/bins/bzwqr";
                 case 6: return null;
             }
             case RTSID:
@@ -180,6 +178,48 @@ public class UniversityInfo {
                     case 4: return "https://api.myjson.com/bins/1hf1zr";
                     case 6: return null;
             }
+            default: return "Институт не найден";
+        }
+    }
+
+    public static String getMagScheduleURLbyID(int id, int courseNumber){
+        switch (id){
+            case FTISID:
+                switch (courseNumber){
+                    case 1: return "https://api.myjson.com/bins/1chs4j";
+                    case 2: return "https://api.myjson.com/bins/v87kz";
+                }
+            case FTIVID:
+                switch (courseNumber){
+
+                }
+            case INTEGYID:
+                switch (courseNumber){
+
+                }
+            case ITID:
+                switch (courseNumber){
+
+                }
+            case KIBID: switch (courseNumber){
+
+            }
+            case KBISPID:
+                switch (courseNumber){
+
+                }
+            case RTSID:
+                switch (courseNumber){
+
+                }
+            case THTID:
+                switch (courseNumber){
+
+                }
+            case IUSTROID:
+                switch (courseNumber){
+
+                }
             default: return "Институт не найден";
         }
     }

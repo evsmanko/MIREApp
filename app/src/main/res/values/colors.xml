@@ -3,4 +3,25 @@
     <color name="colorPrimary">#1976D2</color>
     <color name="colorPrimaryDark">#283593</color>
     <color name="colorAccent">#283593</color>
+    <color name="colorSplash">#1b6091</color>
+
+ <color name="mti_default_primary">#01b37c</color>
+    <color name="mti_default_primary_dark">#09865f</color>
+
+    <color name="mti_lbl_tab_selected">#FFFFFF</color>
+    <color name="mti_lbl_tab_before_selection">#5affffff</color>
+
+    <color name="mti_lbl_day">#b3bdc2</color>
+
+    <color name="mti_lbl_date">#555e6f</color>
+    <color name="mti_lbl_date_selected">#FFFFFF</color>
+    <color name="mti_bg_lbl_date_selected_color">#00b47c</color>
+    <color name="mti_ring_lbl_date_color">#d2f6eb</color>
+    <color name="mti_bg_lbl_today">#d6d6d6</color>
+
+    <color name="mti_lbl_label">#9b9b9b</color>
+
+
+
+
 </resources>

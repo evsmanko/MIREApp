@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="evgeny.manko.schedule.MainActivity">
 
-    <com.github.badoualy.datepicker.DatePickerTimeline
+    <evgeny.manko.schedule.datepicker.DatePickerTimeline
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/time_line"

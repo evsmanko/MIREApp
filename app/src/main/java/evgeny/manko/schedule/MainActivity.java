@@ -12,16 +12,17 @@ import android.support.v4.view.ViewPager;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 
-import com.github.badoualy.datepicker.DatePickerTimeline;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 
+import evgeny.manko.schedule.datepicker.DatePickerTimeline;
 import hirondelle.date4j.DateTime;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     public static ArrayList<ArrayList<ArrayList<ArrayList<Lesson>>>> schedule;
     public static DateTime dateTime;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
 
         SharedPreferences sPref = getSharedPreferences(StartActivity.SHP_JSON_SCHEDULE_FILE, MODE_PRIVATE);
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             timeLine = (DatePickerTimeline) findViewById(R.id.time_line);
 
             timeLine.setFirstVisibleDate(dateTime.getYear(), dateTime.getMonth()-1, dateTime.getDay());
-            timeLine.setLastVisibleDate(2017, 11, 25);
+            timeLine.setLastVisibleDate(2017, 11, 21);
             timeLine.setOnDateSelectedListener(new DatePickerTimeline.OnDateSelectedListener() {
                 @Override
                 public void onDateSelected(int year, int month, int day, int index) {
@@ -82,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
 
     }
 

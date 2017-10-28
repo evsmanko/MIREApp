@@ -75,6 +75,7 @@ public class ScheduleListAdapter extends BaseAdapter{
             }
             else typeAndRoomText = p.room;
 
+
             ((TextView) view.findViewById(R.id.lesson_name)).setText(p.name);
             ((TextView) view.findViewById(R.id.teacher_name)).setText(p.teacherName);
             ((TextView) view.findViewById(R.id.room_text)).setText(typeAndRoomText);

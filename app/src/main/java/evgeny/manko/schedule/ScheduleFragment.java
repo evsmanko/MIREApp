@@ -39,8 +39,8 @@ public class ScheduleFragment extends Fragment {
 
         int getIndex = weekNumber%2==1? 0 : 1;
 
-
-        if(dateTime.getWeekDay()!=1) scheduleDay = MainActivity.schedule.get(getIndex).get(dateTime.getWeekDay()-2);
+        if(dateTime.getDay()==4&&dateTime.getMonth()==11) scheduleDay = new ArrayList<>();
+        else if(dateTime.getWeekDay()!=1) scheduleDay = MainActivity.schedule.get(getIndex).get(dateTime.getWeekDay()-2);
 
     }
 
@@ -48,6 +48,8 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.shedule_fragment, null);
+
+
 
         ListView lessonsList = (ListView) view.findViewById(R.id.lessons_list);
 

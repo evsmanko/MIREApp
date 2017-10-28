@@ -158,6 +158,12 @@ public class StartActivity extends AppCompatActivity {
                             case 'С':
                                 typeTv.setText("Специалитет");
                                 break;
+                            case 'А':
+                                typeTv.setText("Аспирантура");
+                                break;
+                            case 'М':
+                                typeTv.setText("Магистратура");
+                                break;
                         }
                     } else if (
                             (charSequence.length() == 4 || charSequence.length() == 7)
@@ -234,7 +240,9 @@ public class StartActivity extends AppCompatActivity {
         protected String doInBackground(Void... params){
             // получаем данные с внешнего ресурса
             try {
-                URL url = new URL(UniversityInfo.getScheduleURLbyID(instId, course));
+                URL url = groupName.charAt(2)=='М' ?
+                        new URL(UniversityInfo.getMagScheduleURLbyID(instId, course)):
+                        new URL(UniversityInfo.getScheduleURLbyID(instId, course));
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
