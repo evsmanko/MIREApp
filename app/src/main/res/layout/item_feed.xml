@@ -17,22 +17,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/wall_textView"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:text="Мне давно было интересно, как птицы находят дорогу, а муравьи идут по следу. Я не делал об этом Топлес) А недавно, ребята из проекта [club157572003|Открытая лабораторная]"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="14.5sp"
+                />
 
             <TextView
                 android:id="@+id/show_text"
