@@ -1,5 +1,6 @@
 package evgeny.manko.schedule.feed;
 
+import android.animation.ObjectAnimator;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -11,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,57 +73,8 @@ public class FeedActivity extends AppCompatActivity {
         wallTextView = (TextView) findViewById(R.id.wall_textView);
         new FeedParseTask().execute();
 
-
-//        for (int i = 1; i < mResponseArray.length() ; i++) {
-//            try {
-//                JSONObject post = mResponseArray.getJSONObject(1);
-//                 Storing each json item in variable.
-//                String text = post.getString(TAG_MAIN_TITLE);
-//                JSONArray attachments = post.getJSONArray("attachments");
-//
-//                 Iterate through each attachment
-//                for (int j = 0; j < attachments.length(); j++) {
-//                    JSONObject attachment = attachments.getJSONObject(j);
-//                    String type = attachment.getString("type");
-//
-//                    switch (type) {
-//                        case TAG_VIDEO_ATTACH_TYPE: //do smt.
-//                            JSONObject videoObject = attachment.getJSONObject(TAG_VIDEO_ATTACH_TYPE);
-//                            String videoTitle = videoObject.getString("title");
-//                            String videoDescription = videoObject.getString("description");
-//                            break;
-//
-//                        case TAG_PHOTO_ATTACH_TYPE:
-//                            JSONObject photoObject = attachment.getJSONObject(TAG_PHOTO_ATTACH_TYPE);
-//                            String photoText = photoObject.getString("text");
-//                            String photoUrl = photoObject.getString("src_big");
-//                          TODO (1) use glide library to load images from JSON
-//                            break;
-//
-//                        case TAG_AUDIO_ATTACH_TYPE:
-//                            JSONObject audioObject = attachment.getJSONObject(TAG_AUDIO_ATTACH_TYPE);
-//                            String audioTitle = audioObject.getString("title");
-//                            String audioUrl = audioObject.getString("url");
-//                            break;
-//
-//                        default:
-//                            throw new Exception(FeedActivity.class.getSimpleName() + ": unsupported attachment type");
-//                    }
-//
-//
-//
-//
-//                }
-//
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-
-
     }
+
 
 
     private class FeedParseTask extends AsyncTask<URL, Void, String> {

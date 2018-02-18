@@ -1,12 +1,16 @@
 package evgeny.manko.schedule.feed;
 
+import android.animation.ObjectAnimator;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,6 +32,15 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
             cv = (CardView) itemView.findViewById(R.id.feed_card_view);
             postTitleTextView = (TextView) itemView.findViewById(R.id.wall_textView);
             showTextView = (TextView) itemView.findViewById(R.id.show_text);
+
+            showTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    postTitleTextView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                    showTextView.setVisibility(View.GONE);
+                }
+            });
+
         }
     }
 
@@ -36,7 +49,6 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
     FeedAdapter(ArrayList<PostModel> postTitles) {
         this.postTitles = postTitles;
     }
-
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -53,11 +65,10 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
     @Override
     public void onBindViewHolder(PostViewHolder holder, int position) {
         String postText = postTitles.get(position).title;
-        if (postText.length() < 180) {
-            holder.postTitleTextView.setText(Html.fromHtml(postText));
-        } else {
+        holder.postTitleTextView.setText(Html.fromHtml(postText));
+
+        if (postText.length() > 180) {
             holder.showTextView.setVisibility(View.VISIBLE);
-            holder.postTitleTextView.setText(Html.fromHtml(postText.substring(0, 180)));
         }
     }
 
@@ -65,4 +76,5 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
     public int getItemCount() {
         return postTitles.size();
     }
+
 }
