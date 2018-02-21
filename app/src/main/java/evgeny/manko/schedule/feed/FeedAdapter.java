@@ -1,6 +1,7 @@
 package evgeny.manko.schedule.feed;
 
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -8,9 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,6 +31,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
         CardView cv;
         TextView postTitleTextView;
         TextView showTextView;
+        ImageView postImageView;
         public PostViewHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.feed_card_view);
@@ -43,13 +48,17 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
                 }
             });
 
+            postImageView = (ImageView) itemView.findViewById(R.id.wall_imageView);
+
         }
     }
 
-    ArrayList<PostModel> postTitles;
+    ArrayList<PostModel> posts;
+    Context context;
 
-    FeedAdapter(ArrayList<PostModel> postTitles) {
-        this.postTitles = postTitles;
+    FeedAdapter(Context context, ArrayList<PostModel> postTitles) {
+        this.context = context;
+        this.posts = postTitles;
     }
 
     @Override
@@ -66,17 +75,24 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(PostViewHolder holder, int position) {
-        String postText = postTitles.get(position).title;
+        String postText = posts.get(position).title;
         holder.postTitleTextView.setText(Html.fromHtml(postText));
 
         if (postText.length() > 180) {
             holder.showTextView.setVisibility(View.VISIBLE);
         }
+
+
+
+        Picasso.with(context)
+                .load(posts.get(position).photo)
+                .into(holder.postImageView);
+
     }
 
     @Override
     public int getItemCount() {
-        return postTitles.size();
+        return posts.size();
     }
 
 }

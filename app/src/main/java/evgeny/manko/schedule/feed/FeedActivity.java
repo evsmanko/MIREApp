@@ -58,7 +58,8 @@ public class FeedActivity extends AppCompatActivity {
     private static TextView wallTextView;
     private RecyclerView recyclerView;
 
-    private static ArrayList<PostModel> postTitles;
+    private static ArrayList<PostModel> mPosts;
+    private static JSONObject mPhotoJsonObject;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +91,7 @@ public class FeedActivity extends AppCompatActivity {
                 Uri uri = Uri.parse(VK_BASE_URL).buildUpon()
                         .appendQueryParameter("owner_id", "-110693088")
                         .appendQueryParameter("access_token", "444edb70444edb70444edb7059442fc6bb4444e444edb701e32c0885b2c8542cbd88f0d")
-                        .appendQueryParameter("count", "50")
+                        .appendQueryParameter("count", "2")
                         .build();
 
                 URL url = new URL(uri.toString());
@@ -123,16 +124,40 @@ public class FeedActivity extends AppCompatActivity {
                 try {
                     mJsonObject = new JSONObject(strJson);
 
-                    postTitles = new ArrayList<PostModel>();
+                    mPosts = new ArrayList<PostModel>();
                     mResponseArray = mJsonObject.getJSONArray("response");
 
                     for (int i = 1; i < mResponseArray.length(); i++) {
                         JSONObject post = mResponseArray.getJSONObject(i);
 
-                        postTitles.add(new PostModel(post.getString(TAG_MAIN_TITLE)));
+
+                        if (post.has("attachments")) {
+
+                        JSONArray attachments = post.getJSONArray("attachments");
+
+
+                            for (int j = 0; j < attachments.length(); j++) {
+                                JSONObject attachment = attachments.getJSONObject(j);
+                                if (attachment.getString("type").equals(TAG_PHOTO_ATTACH_TYPE)) {
+
+                                    mPhotoJsonObject = attachment.getJSONObject(TAG_PHOTO_ATTACH_TYPE);
+                                    Log.d("PHOTO", mPhotoJsonObject.getString("src_big"));
+
+                                    mPosts.add(new PostModel(
+                                            post.getString(TAG_MAIN_TITLE),
+                                            mPhotoJsonObject.getString("src_big")));
+
+                                }
+
+                            }
+                        }
+
+
+
                     }
 
-                    FeedAdapter adapter = new FeedAdapter(postTitles);
+
+                    FeedAdapter adapter = new FeedAdapter(FeedActivity.this, mPosts);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
