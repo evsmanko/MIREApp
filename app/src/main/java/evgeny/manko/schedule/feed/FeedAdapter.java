@@ -44,7 +44,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
                     postTitleTextView.setLayoutParams(new LinearLayout.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT));
-                    showTextView.setVisibility(View.GONE);
+//                    showTextView.setVisibility(View.INVISIBLE);
+                    showTextView.setText("");
                 }
             });
 
@@ -82,13 +83,12 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
             holder.showTextView.setVisibility(View.VISIBLE);
         }
 
-
-
         Picasso.with(context)
                 .load(posts.get(position).photo)
                 .into(holder.postImageView);
 
     }
+
 
     @Override
     public int getItemCount() {

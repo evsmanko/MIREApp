@@ -87,11 +87,11 @@ public class FeedActivity extends AppCompatActivity {
         protected String doInBackground(URL... params) {
             // получаем данные с внешнего ресурса
             try {
-
                 Uri uri = Uri.parse(VK_BASE_URL).buildUpon()
-                        .appendQueryParameter("owner_id", "-110693088")
+                        .appendQueryParameter("owner_id", "-1388")
                         .appendQueryParameter("access_token", "444edb70444edb70444edb7059442fc6bb4444e444edb701e32c0885b2c8542cbd88f0d")
-                        .appendQueryParameter("count", "2")
+//                        .appendQueryParameter("offset", "2")
+                        .appendQueryParameter("count", "100")
                         .build();
 
                 URL url = new URL(uri.toString());
@@ -141,8 +141,6 @@ public class FeedActivity extends AppCompatActivity {
                                 if (attachment.getString("type").equals(TAG_PHOTO_ATTACH_TYPE)) {
 
                                     mPhotoJsonObject = attachment.getJSONObject(TAG_PHOTO_ATTACH_TYPE);
-                                    Log.d("PHOTO", mPhotoJsonObject.getString("src_big"));
-
                                     mPosts.add(new PostModel(
                                             post.getString(TAG_MAIN_TITLE),
                                             mPhotoJsonObject.getString("src_big")));
@@ -156,8 +154,9 @@ public class FeedActivity extends AppCompatActivity {
 
                     }
 
-
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(FeedActivity.this);
                     FeedAdapter adapter = new FeedAdapter(FeedActivity.this, mPosts);
+                    recyclerView.setLayoutManager(layoutManager);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
