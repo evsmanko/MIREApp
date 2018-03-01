@@ -7,9 +7,12 @@ package evgeny.manko.schedule.feed;
 public class PostModel {
     String title;
     String photo;
+    String date;
 
-    PostModel(String title, String photo) {
+    PostModel(String title, String photo, String date) {
         this.title = title;
         this.photo = photo;
+        this.date = date;
+
     }
 }

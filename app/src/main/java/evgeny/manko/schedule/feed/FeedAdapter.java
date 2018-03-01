@@ -29,12 +29,14 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
     public static class PostViewHolder extends RecyclerView.ViewHolder {
 
         CardView cv;
+        TextView postDateTextView;
         TextView postTitleTextView;
         TextView showTextView;
         ImageView postImageView;
         public PostViewHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.feed_card_view);
+            postDateTextView = (TextView) itemView.findViewById(R.id.wall_date_textview);
             postTitleTextView = (TextView) itemView.findViewById(R.id.wall_textView);
             showTextView = (TextView) itemView.findViewById(R.id.show_text);
 
@@ -76,7 +78,9 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(PostViewHolder holder, int position) {
+        String postDate = posts.get(position).date;
         String postText = posts.get(position).title;
+        holder.postDateTextView.setText(postDate);
         holder.postTitleTextView.setText(Html.fromHtml(postText));
 
         if (postText.length() > 180) {

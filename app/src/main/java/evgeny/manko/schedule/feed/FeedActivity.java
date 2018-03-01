@@ -32,11 +32,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import evgeny.manko.schedule.Lesson;
 import evgeny.manko.schedule.R;
 import evgeny.manko.schedule.UniversityInfo;
+import evgeny.manko.schedule.utils.DateUtils;
 
 
 /**
@@ -91,7 +94,7 @@ public class FeedActivity extends AppCompatActivity {
                         .appendQueryParameter("owner_id", "-1388")
                         .appendQueryParameter("access_token", "444edb70444edb70444edb7059442fc6bb4444e444edb701e32c0885b2c8542cbd88f0d")
 //                        .appendQueryParameter("offset", "2")
-                        .appendQueryParameter("count", "100")
+                        .appendQueryParameter("count", "10")
                         .build();
 
                 URL url = new URL(uri.toString());
@@ -137,13 +140,21 @@ public class FeedActivity extends AppCompatActivity {
 
 
                             for (int j = 0; j < attachments.length(); j++) {
+
                                 JSONObject attachment = attachments.getJSONObject(j);
+
                                 if (attachment.getString("type").equals(TAG_PHOTO_ATTACH_TYPE)) {
 
                                     mPhotoJsonObject = attachment.getJSONObject(TAG_PHOTO_ATTACH_TYPE);
+                                    Date postDate = new Date(Long.valueOf(post.getString("date")) * 1000);
+                                    Date currentDate = Calendar.getInstance().getTime();
+//                                    Log.d("DATE: ", DateUtils.ParseDate(postDate, currentDate));
+
                                     mPosts.add(new PostModel(
                                             post.getString(TAG_MAIN_TITLE),
-                                            mPhotoJsonObject.getString("src_big")));
+                                            mPhotoJsonObject.getString("src_big"),
+                                            DateUtils.ParseDate(postDate, currentDate)
+                                    ));
 
                                 }
 

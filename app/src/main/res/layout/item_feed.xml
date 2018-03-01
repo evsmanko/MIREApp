@@ -28,6 +28,15 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/wall_date_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="14 Фев 21:00"
+                    android:gravity="right"
+                    />
+
+
+                <TextView
                     android:id="@+id/wall_textView"
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
