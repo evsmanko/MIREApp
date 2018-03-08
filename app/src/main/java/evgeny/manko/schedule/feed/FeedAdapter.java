@@ -33,6 +33,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
         TextView postTitleTextView;
         TextView showTextView;
         ImageView postImageView;
+
         public PostViewHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.feed_card_view);
@@ -46,7 +47,6 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.PostViewHolder
                     postTitleTextView.setLayoutParams(new LinearLayout.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT));
-//                    showTextView.setVisibility(View.INVISIBLE);
                     showTextView.setText("");
                 }
             });
