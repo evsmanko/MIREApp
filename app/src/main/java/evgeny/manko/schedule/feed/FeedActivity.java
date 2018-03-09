@@ -30,8 +30,14 @@ public class FeedActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private static ArrayList<PostModel> mPosts;
     private static Boolean addPosts = false;
+    private static Integer offset = 5;
+    private static Boolean isLoading = false;
+    private int visibleThreshold = 6;
 
     private static LinearLayoutManager layoutManager;
+
+
+    private static FeedAdapter adapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +54,8 @@ public class FeedActivity extends AppCompatActivity {
 
             FeedParser.setPostCount(5);
 
+            layoutManager = new LinearLayoutManager(FeedActivity.this);
+
             new FeedParseTask().execute();
 
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -56,6 +64,24 @@ public class FeedActivity extends AppCompatActivity {
                     new FeedParseTask().execute();
                 }
             });
+
+
+            recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
+
+                    int totalItemCount = layoutManager.getItemCount();
+                    int lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+                    if (!isLoading && totalItemCount <= (lastVisibleItem + visibleThreshold)) {
+                        isLoading = true;
+                        new FeedAddPostsTask().execute();
+                    }
+
+                }
+            });
+
+
         } else {
             Toast.makeText(this, "No connection", Toast.LENGTH_LONG).show();
         }
@@ -67,7 +93,7 @@ public class FeedActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(URL... params) {
-            return FeedParser.getJsonResponse();
+            return FeedParser.getJsonResponse(0);
         }
 
         @Override
@@ -76,25 +102,48 @@ public class FeedActivity extends AppCompatActivity {
 
             mPosts = FeedParser.parseJsonResponse(strJson);
 
-            LinearLayoutManager layoutManager = new LinearLayoutManager(FeedActivity.this);
-            FeedAdapter adapter = new FeedAdapter(FeedActivity.this, mPosts);
+            adapter = new FeedAdapter(FeedActivity.this, mPosts);
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setHasFixedSize(true);
 
-            if (!addPosts) {
+//            if (!addPosts) {
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
-            } else {
-                adapter.notifyDataSetChanged();
-                addPosts = false;
-            }
+//            } else {
+//                adapter.notifyDataSetChanged();
+//            }
 
             mSwipeRefreshLayout.setRefreshing(false);
 
 
         }
+    }
 
+    private class FeedAddPostsTask extends AsyncTask<URL, Void, String> {
 
+        @Override
+        protected String doInBackground(URL... urls) {
+            return FeedParser.getJsonResponse(offset);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            offset += 5;
+
+//            mPosts.add(FeedParser.parseJsonResponse(s));
+            ArrayList<PostModel> addedPosts = FeedParser.parseJsonResponse(s);
+
+            for (PostModel post : addedPosts) {
+                mPosts.add(post);
+            }
+
+            adapter.notifyDataSetChanged();
+            addPosts = false;
+
+            mSwipeRefreshLayout.setRefreshing(false);
+            isLoading = false;
+        }
     }
 
 }

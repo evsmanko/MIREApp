@@ -37,7 +37,7 @@ public class FeedParser {
 
     private static Integer postCount;
 
-    public static String getJsonResponse() {
+    public static String getJsonResponse(Integer offset) {
         // получаем данные с внешнего ресурса
         HttpURLConnection urlConnection = null;
         String resultJson = null;
@@ -49,6 +49,7 @@ public class FeedParser {
                     .appendQueryParameter("owner_id", "-1388")
                     .appendQueryParameter("access_token", "444edb70444edb70444edb7059442fc6bb4444e444edb701e32c0885b2c8542cbd88f0d")
                     .appendQueryParameter("count", String.valueOf(postCount))
+                    .appendQueryParameter("offset", String.valueOf(offset))
                     .appendQueryParameter("version", "5.73")
                     .build();
 
